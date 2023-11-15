@@ -143,7 +143,7 @@ function validateShip(data) {
   const schema = Joi.object({
     name: Joi.string().required(),
     overview: {
-      shipHighlights: Joi.array().items(Joi.string().allow("").allow("")),
+      shipHighlights: Joi.array().items(Joi.string().allow("")),
       dining: Joi.array().items(
         Joi.object({
           type: Joi.string().allow(""),
