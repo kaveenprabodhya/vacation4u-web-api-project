@@ -1,0 +1,304 @@
+15/11/2023, 18:54:12 [31merror[39m: [31muncaughtException: Cannot find module './startup/logging'[39m
+[31mRequire stack:[39m
+[31m- C:\Users\kaveenprabodhya\Desktop\Vacation4U-reservations-node-rest-app\index.js[39m
+[31mError: Cannot find module './startup/logging'[39m
+[31mRequire stack:[39m
+[31m- C:\Users\kaveenprabodhya\Desktop\Vacation4U-reservations-node-rest-app\index.js[39m
+[31m    at Module._resolveFilename (node:internal/modules/cjs/loader:1077:15)[39m
+[31m    at Module._load (node:internal/modules/cjs/loader:922:27)[39m
+[31m    at Module.require (node:internal/modules/cjs/loader:1143:19)[39m
+[31m    at require (node:internal/modules/cjs/helpers:119:18)[39m
+[31m    at Object.<anonymous> (C:\Users\kaveenprabodhya\Desktop\Vacation4U-reservations-node-rest-app\index.js:4:1)[39m
+[31m    at Module._compile (node:internal/modules/cjs/loader:1256:14)[39m
+[31m    at Module._extensions..js (node:internal/modules/cjs/loader:1310:10)[39m
+[31m    at Module.load (node:internal/modules/cjs/loader:1119:32)[39m
+[31m    at Module._load (node:internal/modules/cjs/loader:960:12)[39m
+[31m    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:86:12)[39m
+15/11/2023, 18:54:32 [31merror[39m: [31muncaughtException: Cannot find module './startup/logging'[39m
+[31mRequire stack:[39m
+[31m- C:\Users\kaveenprabodhya\Desktop\Vacation4U-reservations-node-rest-app\index.js[39m
+[31mError: Cannot find module './startup/logging'[39m
+[31mRequire stack:[39m
+[31m- C:\Users\kaveenprabodhya\Desktop\Vacation4U-reservations-node-rest-app\index.js[39m
+[31m    at Module._resolveFilename (node:internal/modules/cjs/loader:1077:15)[39m
+[31m    at Module._load (node:internal/modules/cjs/loader:922:27)[39m
+[31m    at Module.require (node:internal/modules/cjs/loader:1143:19)[39m
+[31m    at require (node:internal/modules/cjs/helpers:119:18)[39m
+[31m    at Object.<anonymous> (C:\Users\kaveenprabodhya\Desktop\Vacation4U-reservations-node-rest-app\index.js:4:1)[39m
+[31m    at Module._compile (node:internal/modules/cjs/loader:1256:14)[39m
+[31m    at Module._extensions..js (node:internal/modules/cjs/loader:1310:10)[39m
+[31m    at Module.load (node:internal/modules/cjs/loader:1119:32)[39m
+[31m    at Module._load (node:internal/modules/cjs/loader:960:12)[39m
+[31m    at Function.executeUserEntryPoint [as runMain] (node:internal/modules/run_main:86:12)[39m
+15/11/2023, 19:32:45 [31merror[39m: [31muncaughtException: Cannot find module '../routes/users'[39m
+[31mRequire stack:[39m
+[31m- C:\Users\kaveenprabodhya\Desktop\Vacation4U-reservations-node-rest-app\startup\routes.js[39m
+[31m- C:\Users\kaveenprabodhya\Desktop\Vacation4U-reservations-node-rest-app\index.js[39m
+[31mError: Cannot find module '../routes/users'[39m
+[31mRequire stack:[39m
+[31m- C:\Users\kaveenprabodhya\Desktop\Vacation4U-reservations-node-rest-app\startup\routes.js[39m
+[31m- C:\Users\kaveenprabodhya\Desktop\Vacation4U-reservations-node-rest-app\index.js[39m
+[31m    at Module._resolveFilename (node:internal/modules/cjs/loader:1077:15)[39m
+[31m    at Module._load (node:internal/modules/cjs/loader:922:27)[39m
+[31m    at Module.require (node:internal/modules/cjs/loader:1143:19)[39m
+[31m    at require (node:internal/modules/cjs/helpers:119:18)[39m
+[31m    at Object.<anonymous> (C:\Users\kaveenprabodhya\Desktop\Vacation4U-reservations-node-rest-app\startup\routes.js:4:15)[39m
+[31m    at Module._compile (node:internal/modules/cjs/loader:1256:14)[39m
+[31m    at Module._extensions..js (node:internal/modules/cjs/loader:1310:10)[39m
+[31m    at Module.load (node:internal/modules/cjs/loader:1119:32)[39m
+[31m    at Module._load (node:internal/modules/cjs/loader:960:12)[39m
+[31m    at Module.require (node:internal/modules/cjs/loader:1143:19)[39m
+15/11/2023, 19:32:54 [31merror[39m: [31muncaughtException: Cannot find module '../routes/cruises'[39m
+[31mRequire stack:[39m
+[31m- C:\Users\kaveenprabodhya\Desktop\Vacation4U-reservations-node-rest-app\startup\routes.js[39m
+[31m- C:\Users\kaveenprabodhya\Desktop\Vacation4U-reservations-node-rest-app\index.js[39m
+[31mError: Cannot find module '../routes/cruises'[39m
+[31mRequire stack:[39m
+[31m- C:\Users\kaveenprabodhya\Desktop\Vacation4U-reservations-node-rest-app\startup\routes.js[39m
+[31m- C:\Users\kaveenprabodhya\Desktop\Vacation4U-reservations-node-rest-app\index.js[39m
+[31m    at Module._resolveFilename (node:internal/modules/cjs/loader:1077:15)[39m
+[31m    at Module._load (node:internal/modules/cjs/loader:922:27)[39m
+[31m    at Module.require (node:internal/modules/cjs/loader:1143:19)[39m
+[31m    at require (node:internal/modules/cjs/helpers:119:18)[39m
+[31m    at Object.<anonymous> (C:\Users\kaveenprabodhya\Desktop\Vacation4U-reservations-node-rest-app\startup\routes.js:2:16)[39m
+[31m    at Module._compile (node:internal/modules/cjs/loader:1256:14)[39m
+[31m    at Module._extensions..js (node:internal/modules/cjs/loader:1310:10)[39m
+[31m    at Module.load (node:internal/modules/cjs/loader:1119:32)[39m
+[31m    at Module._load (node:internal/modules/cjs/loader:960:12)[39m
+[31m    at Module.require (node:internal/modules/cjs/loader:1143:19)[39m
+15/11/2023, 19:34:53 [31merror[39m: [31muncaughtException: Cannot find module '../routes/cruises'[39m
+[31mRequire stack:[39m
+[31m- C:\Users\kaveenprabodhya\Desktop\Vacation4U-reservations-node-rest-app\startup\routes.js[39m
+[31m- C:\Users\kaveenprabodhya\Desktop\Vacation4U-reservations-node-rest-app\index.js[39m
+[31mError: Cannot find module '../routes/cruises'[39m
+[31mRequire stack:[39m
+[31m- C:\Users\kaveenprabodhya\Desktop\Vacation4U-reservations-node-rest-app\startup\routes.js[39m
+[31m- C:\Users\kaveenprabodhya\Desktop\Vacation4U-reservations-node-rest-app\index.js[39m
+[31m    at Module._resolveFilename (node:internal/modules/cjs/loader:1077:15)[39m
+[31m    at Module._load (node:internal/modules/cjs/loader:922:27)[39m
+[31m    at Module.require (node:internal/modules/cjs/loader:1143:19)[39m
+[31m    at require (node:internal/modules/cjs/helpers:119:18)[39m
+[31m    at Object.<anonymous> (C:\Users\kaveenprabodhya\Desktop\Vacation4U-reservations-node-rest-app\startup\routes.js:2:16)[39m
+[31m    at Module._compile (node:internal/modules/cjs/loader:1256:14)[39m
+[31m    at Module._extensions..js (node:internal/modules/cjs/loader:1310:10)[39m
+[31m    at Module.load (node:internal/modules/cjs/loader:1119:32)[39m
+[31m    at Module._load (node:internal/modules/cjs/loader:960:12)[39m
+[31m    at Module.require (node:internal/modules/cjs/loader:1143:19)[39m
+15/11/2023, 19:35:39 [31merror[39m: [31muncaughtException: Cannot find module '../routes/cruises'[39m
+[31mRequire stack:[39m
+[31m- C:\Users\kaveenprabodhya\Desktop\Vacation4U-reservations-node-rest-app\startup\routes.js[39m
+[31m- C:\Users\kaveenprabodhya\Desktop\Vacation4U-reservations-node-rest-app\index.js[39m
+[31mError: Cannot find module '../routes/cruises'[39m
+[31mRequire stack:[39m
+[31m- C:\Users\kaveenprabodhya\Desktop\Vacation4U-reservations-node-rest-app\startup\routes.js[39m
+[31m- C:\Users\kaveenprabodhya\Desktop\Vacation4U-reservations-node-rest-app\index.js[39m
+[31m    at Module._resolveFilename (node:internal/modules/cjs/loader:1077:15)[39m
+[31m    at Module._load (node:internal/modules/cjs/loader:922:27)[39m
+[31m    at Module.require (node:internal/modules/cjs/loader:1143:19)[39m
+[31m    at require (node:internal/modules/cjs/helpers:119:18)[39m
+[31m    at Object.<anonymous> (C:\Users\kaveenprabodhya\Desktop\Vacation4U-reservations-node-rest-app\startup\routes.js:2:16)[39m
+[31m    at Module._compile (node:internal/modules/cjs/loader:1256:14)[39m
+[31m    at Module._extensions..js (node:internal/modules/cjs/loader:1310:10)[39m
+[31m    at Module.load (node:internal/modules/cjs/loader:1119:32)[39m
+[31m    at Module._load (node:internal/modules/cjs/loader:960:12)[39m
+[31m    at Module.require (node:internal/modules/cjs/loader:1143:19)[39m
+15/11/2023, 19:36:43 [31merror[39m: [31muncaughtException: Cannot find module '../controllers/cruise/cruiseController'[39m
+[31mRequire stack:[39m
+[31m- C:\Users\kaveenprabodhya\Desktop\Vacation4U-reservations-node-rest-app\routes\cruise\cruises.js[39m
+[31m- C:\Users\kaveenprabodhya\Desktop\Vacation4U-reservations-node-rest-app\startup\routes.js[39m
+[31m- C:\Users\kaveenprabodhya\Desktop\Vacation4U-reservations-node-rest-app\index.js[39m
+[31mError: Cannot find module '../controllers/cruise/cruiseController'[39m
+[31mRequire stack:[39m
+[31m- C:\Users\kaveenprabodhya\Desktop\Vacation4U-reservations-node-rest-app\routes\cruise\cruises.js[39m
+[31m- C:\Users\kaveenprabodhya\Desktop\Vacation4U-reservations-node-rest-app\startup\routes.js[39m
+[31m- C:\Users\kaveenprabodhya\Desktop\Vacation4U-reservations-node-rest-app\index.js[39m
+[31m    at Module._resolveFilename (node:internal/modules/cjs/loader:1077:15)[39m
+[31m    at Module._load (node:internal/modules/cjs/loader:922:27)[39m
+[31m    at Module.require (node:internal/modules/cjs/loader:1143:19)[39m
+[31m    at require (node:internal/modules/cjs/helpers:119:18)[39m
+[31m    at Object.<anonymous> (C:\Users\kaveenprabodhya\Desktop\Vacation4U-reservations-node-rest-app\routes\cruise\cruises.js:3:16)[39m
+[31m    at Module._compile (node:internal/modules/cjs/loader:1256:14)[39m
+[31m    at Module._extensions..js (node:internal/modules/cjs/loader:1310:10)[39m
+[31m    at Module.load (node:internal/modules/cjs/loader:1119:32)[39m
+[31m    at Module._load (node:internal/modules/cjs/loader:960:12)[39m
+[31m    at Module.require (node:internal/modules/cjs/loader:1143:19)[39m
+15/11/2023, 19:39:00 [31merror[39m: [31muncaughtException: Cannot find module '../controllers/cruise/cruiseController'[39m
+[31mRequire stack:[39m
+[31m- C:\Users\kaveenprabodhya\Desktop\Vacation4U-reservations-node-rest-app\routes\cruise\cruises.js[39m
+[31m- C:\Users\kaveenprabodhya\Desktop\Vacation4U-reservations-node-rest-app\startup\routes.js[39m
+[31m- C:\Users\kaveenprabodhya\Desktop\Vacation4U-reservations-node-rest-app\index.js[39m
+[31mError: Cannot find module '../controllers/cruise/cruiseController'[39m
+[31mRequire stack:[39m
+[31m- C:\Users\kaveenprabodhya\Desktop\Vacation4U-reservations-node-rest-app\routes\cruise\cruises.js[39m
+[31m- C:\Users\kaveenprabodhya\Desktop\Vacation4U-reservations-node-rest-app\startup\routes.js[39m
+[31m- C:\Users\kaveenprabodhya\Desktop\Vacation4U-reservations-node-rest-app\index.js[39m
+[31m    at Module._resolveFilename (node:internal/modules/cjs/loader:1077:15)[39m
+[31m    at Module._load (node:internal/modules/cjs/loader:922:27)[39m
+[31m    at Module.require (node:internal/modules/cjs/loader:1143:19)[39m
+[31m    at require (node:internal/modules/cjs/helpers:119:18)[39m
+[31m    at Object.<anonymous> (C:\Users\kaveenprabodhya\Desktop\Vacation4U-reservations-node-rest-app\routes\cruise\cruises.js:3:16)[39m
+[31m    at Module._compile (node:internal/modules/cjs/loader:1256:14)[39m
+[31m    at Module._extensions..js (node:internal/modules/cjs/loader:1310:10)[39m
+[31m    at Module.load (node:internal/modules/cjs/loader:1119:32)[39m
+[31m    at Module._load (node:internal/modules/cjs/loader:960:12)[39m
+[31m    at Module.require (node:internal/modules/cjs/loader:1143:19)[39m
+15/11/2023, 19:41:25 [31merror[39m: [31muncaughtException: Cannot find module '../controllers/cruise/cruiseController'[39m
+[31mRequire stack:[39m
+[31m- C:\Users\kaveenprabodhya\Desktop\Vacation4U-reservations-node-rest-app\routes\cruise\cruises.js[39m
+[31m- C:\Users\kaveenprabodhya\Desktop\Vacation4U-reservations-node-rest-app\startup\routes.js[39m
+[31m- C:\Users\kaveenprabodhya\Desktop\Vacation4U-reservations-node-rest-app\index.js[39m
+[31mError: Cannot find module '../controllers/cruise/cruiseController'[39m
+[31mRequire stack:[39m
+[31m- C:\Users\kaveenprabodhya\Desktop\Vacation4U-reservations-node-rest-app\routes\cruise\cruises.js[39m
+[31m- C:\Users\kaveenprabodhya\Desktop\Vacation4U-reservations-node-rest-app\startup\routes.js[39m
+[31m- C:\Users\kaveenprabodhya\Desktop\Vacation4U-reservations-node-rest-app\index.js[39m
+[31m    at Module._resolveFilename (node:internal/modules/cjs/loader:1077:15)[39m
+[31m    at Module._load (node:internal/modules/cjs/loader:922:27)[39m
+[31m    at Module.require (node:internal/modules/cjs/loader:1143:19)[39m
+[31m    at require (node:internal/modules/cjs/helpers:119:18)[39m
+[31m    at Object.<anonymous> (C:\Users\kaveenprabodhya\Desktop\Vacation4U-reservations-node-rest-app\routes\cruise\cruises.js:3:16)[39m
+[31m    at Module._compile (node:internal/modules/cjs/loader:1256:14)[39m
+[31m    at Module._extensions..js (node:internal/modules/cjs/loader:1310:10)[39m
+[31m    at Module.load (node:internal/modules/cjs/loader:1119:32)[39m
+[31m    at Module._load (node:internal/modules/cjs/loader:960:12)[39m
+[31m    at Module.require (node:internal/modules/cjs/loader:1143:19)[39m
+15/11/2023, 19:41:30 [31merror[39m: [31muncaughtException: Cannot find module '../controllers/cruise/cruiseController'[39m
+[31mRequire stack:[39m
+[31m- C:\Users\kaveenprabodhya\Desktop\Vacation4U-reservations-node-rest-app\routes\cruise\cruises.js[39m
+[31m- C:\Users\kaveenprabodhya\Desktop\Vacation4U-reservations-node-rest-app\startup\routes.js[39m
+[31m- C:\Users\kaveenprabodhya\Desktop\Vacation4U-reservations-node-rest-app\index.js[39m
+[31mError: Cannot find module '../controllers/cruise/cruiseController'[39m
+[31mRequire stack:[39m
+[31m- C:\Users\kaveenprabodhya\Desktop\Vacation4U-reservations-node-rest-app\routes\cruise\cruises.js[39m
+[31m- C:\Users\kaveenprabodhya\Desktop\Vacation4U-reservations-node-rest-app\startup\routes.js[39m
+[31m- C:\Users\kaveenprabodhya\Desktop\Vacation4U-reservations-node-rest-app\index.js[39m
+[31m    at Module._resolveFilename (node:internal/modules/cjs/loader:1077:15)[39m
+[31m    at Module._load (node:internal/modules/cjs/loader:922:27)[39m
+[31m    at Module.require (node:internal/modules/cjs/loader:1143:19)[39m
+[31m    at require (node:internal/modules/cjs/helpers:119:18)[39m
+[31m    at Object.<anonymous> (C:\Users\kaveenprabodhya\Desktop\Vacation4U-reservations-node-rest-app\routes\cruise\cruises.js:3:16)[39m
+[31m    at Module._compile (node:internal/modules/cjs/loader:1256:14)[39m
+[31m    at Module._extensions..js (node:internal/modules/cjs/loader:1310:10)[39m
+[31m    at Module.load (node:internal/modules/cjs/loader:1119:32)[39m
+[31m    at Module._load (node:internal/modules/cjs/loader:960:12)[39m
+[31m    at Module.require (node:internal/modules/cjs/loader:1143:19)[39m
+15/11/2023, 19:41:36 [31merror[39m: [31muncaughtException: Cannot find module '../controllers/cruise/cruiseController'[39m
+[31mRequire stack:[39m
+[31m- C:\Users\kaveenprabodhya\Desktop\Vacation4U-reservations-node-rest-app\routes\cruise\cruises.js[39m
+[31m- C:\Users\kaveenprabodhya\Desktop\Vacation4U-reservations-node-rest-app\startup\routes.js[39m
+[31m- C:\Users\kaveenprabodhya\Desktop\Vacation4U-reservations-node-rest-app\index.js[39m
+[31mError: Cannot find module '../controllers/cruise/cruiseController'[39m
+[31mRequire stack:[39m
+[31m- C:\Users\kaveenprabodhya\Desktop\Vacation4U-reservations-node-rest-app\routes\cruise\cruises.js[39m
+[31m- C:\Users\kaveenprabodhya\Desktop\Vacation4U-reservations-node-rest-app\startup\routes.js[39m
+[31m- C:\Users\kaveenprabodhya\Desktop\Vacation4U-reservations-node-rest-app\index.js[39m
+[31m    at Module._resolveFilename (node:internal/modules/cjs/loader:1077:15)[39m
+[31m    at Module._load (node:internal/modules/cjs/loader:922:27)[39m
+[31m    at Module.require (node:internal/modules/cjs/loader:1143:19)[39m
+[31m    at require (node:internal/modules/cjs/helpers:119:18)[39m
+[31m    at Object.<anonymous> (C:\Users\kaveenprabodhya\Desktop\Vacation4U-reservations-node-rest-app\routes\cruise\cruises.js:3:16)[39m
+[31m    at Module._compile (node:internal/modules/cjs/loader:1256:14)[39m
+[31m    at Module._extensions..js (node:internal/modules/cjs/loader:1310:10)[39m
+[31m    at Module.load (node:internal/modules/cjs/loader:1119:32)[39m
+[31m    at Module._load (node:internal/modules/cjs/loader:960:12)[39m
+[31m    at Module.require (node:internal/modules/cjs/loader:1143:19)[39m
+15/11/2023, 19:41:48 [31merror[39m: [31muncaughtException: Cannot find module '../controllers/cruise/cruiseController'[39m
+[31mRequire stack:[39m
+[31m- C:\Users\kaveenprabodhya\Desktop\Vacation4U-reservations-node-rest-app\routes\cruise\cruises.js[39m
+[31m- C:\Users\kaveenprabodhya\Desktop\Vacation4U-reservations-node-rest-app\startup\routes.js[39m
+[31m- C:\Users\kaveenprabodhya\Desktop\Vacation4U-reservations-node-rest-app\index.js[39m
+[31mError: Cannot find module '../controllers/cruise/cruiseController'[39m
+[31mRequire stack:[39m
+[31m- C:\Users\kaveenprabodhya\Desktop\Vacation4U-reservations-node-rest-app\routes\cruise\cruises.js[39m
+[31m- C:\Users\kaveenprabodhya\Desktop\Vacation4U-reservations-node-rest-app\startup\routes.js[39m
+[31m- C:\Users\kaveenprabodhya\Desktop\Vacation4U-reservations-node-rest-app\index.js[39m
+[31m    at Module._resolveFilename (node:internal/modules/cjs/loader:1077:15)[39m
+[31m    at Module._load (node:internal/modules/cjs/loader:922:27)[39m
+[31m    at Module.require (node:internal/modules/cjs/loader:1143:19)[39m
+[31m    at require (node:internal/modules/cjs/helpers:119:18)[39m
+[31m    at Object.<anonymous> (C:\Users\kaveenprabodhya\Desktop\Vacation4U-reservations-node-rest-app\routes\cruise\cruises.js:3:16)[39m
+[31m    at Module._compile (node:internal/modules/cjs/loader:1256:14)[39m
+[31m    at Module._extensions..js (node:internal/modules/cjs/loader:1310:10)[39m
+[31m    at Module.load (node:internal/modules/cjs/loader:1119:32)[39m
+[31m    at Module._load (node:internal/modules/cjs/loader:960:12)[39m
+[31m    at Module.require (node:internal/modules/cjs/loader:1143:19)[39m
+15/11/2023, 19:44:02 [31merror[39m: [31muncaughtException: Cannot find module '../middlewares/auth'[39m
+[31mRequire stack:[39m
+[31m- C:\Users\kaveenprabodhya\Desktop\Vacation4U-reservations-node-rest-app\routes\cruise\cruiseBookings.js[39m
+[31m- C:\Users\kaveenprabodhya\Desktop\Vacation4U-reservations-node-rest-app\startup\routes.js[39m
+[31m- C:\Users\kaveenprabodhya\Desktop\Vacation4U-reservations-node-rest-app\index.js[39m
+[31mError: Cannot find module '../middlewares/auth'[39m
+[31mRequire stack:[39m
+[31m- C:\Users\kaveenprabodhya\Desktop\Vacation4U-reservations-node-rest-app\routes\cruise\cruiseBookings.js[39m
+[31m- C:\Users\kaveenprabodhya\Desktop\Vacation4U-reservations-node-rest-app\startup\routes.js[39m
+[31m- C:\Users\kaveenprabodhya\Desktop\Vacation4U-reservations-node-rest-app\index.js[39m
+[31m    at Module._resolveFilename (node:internal/modules/cjs/loader:1077:15)[39m
+[31m    at Module._load (node:internal/modules/cjs/loader:922:27)[39m
+[31m    at Module.require (node:internal/modules/cjs/loader:1143:19)[39m
+[31m    at require (node:internal/modules/cjs/helpers:119:18)[39m
+[31m    at Object.<anonymous> (C:\Users\kaveenprabodhya\Desktop\Vacation4U-reservations-node-rest-app\routes\cruise\cruiseBookings.js:3:14)[39m
+[31m    at Module._compile (node:internal/modules/cjs/loader:1256:14)[39m
+[31m    at Module._extensions..js (node:internal/modules/cjs/loader:1310:10)[39m
+[31m    at Module.load (node:internal/modules/cjs/loader:1119:32)[39m
+[31m    at Module._load (node:internal/modules/cjs/loader:960:12)[39m
+[31m    at Module.require (node:internal/modules/cjs/loader:1143:19)[39m
+15/11/2023, 19:44:43 [31merror[39m: [31muncaughtException: Cannot find module '../middlewares/auth'[39m
+[31mRequire stack:[39m
+[31m- C:\Users\kaveenprabodhya\Desktop\Vacation4U-reservations-node-rest-app\routes\authection\users.js[39m
+[31m- C:\Users\kaveenprabodhya\Desktop\Vacation4U-reservations-node-rest-app\startup\routes.js[39m
+[31m- C:\Users\kaveenprabodhya\Desktop\Vacation4U-reservations-node-rest-app\index.js[39m
+[31mError: Cannot find module '../middlewares/auth'[39m
+[31mRequire stack:[39m
+[31m- C:\Users\kaveenprabodhya\Desktop\Vacation4U-reservations-node-rest-app\routes\authection\users.js[39m
+[31m- C:\Users\kaveenprabodhya\Desktop\Vacation4U-reservations-node-rest-app\startup\routes.js[39m
+[31m- C:\Users\kaveenprabodhya\Desktop\Vacation4U-reservations-node-rest-app\index.js[39m
+[31m    at Module._resolveFilename (node:internal/modules/cjs/loader:1077:15)[39m
+[31m    at Module._load (node:internal/modules/cjs/loader:922:27)[39m
+[31m    at Module.require (node:internal/modules/cjs/loader:1143:19)[39m
+[31m    at require (node:internal/modules/cjs/helpers:119:18)[39m
+[31m    at Object.<anonymous> (C:\Users\kaveenprabodhya\Desktop\Vacation4U-reservations-node-rest-app\routes\authection\users.js:3:14)[39m
+[31m    at Module._compile (node:internal/modules/cjs/loader:1256:14)[39m
+[31m    at Module._extensions..js (node:internal/modules/cjs/loader:1310:10)[39m
+[31m    at Module.load (node:internal/modules/cjs/loader:1119:32)[39m
+[31m    at Module._load (node:internal/modules/cjs/loader:960:12)[39m
+[31m    at Module.require (node:internal/modules/cjs/loader:1143:19)[39m
+15/11/2023, 19:45:01 [31merror[39m: [31muncaughtException: Cannot find module '.../../controllers/authentication/userController'[39m
+[31mRequire stack:[39m
+[31m- C:\Users\kaveenprabodhya\Desktop\Vacation4U-reservations-node-rest-app\routes\authection\users.js[39m
+[31m- C:\Users\kaveenprabodhya\Desktop\Vacation4U-reservations-node-rest-app\startup\routes.js[39m
+[31m- C:\Users\kaveenprabodhya\Desktop\Vacation4U-reservations-node-rest-app\index.js[39m
+[31mError: Cannot find module '.../../controllers/authentication/userController'[39m
+[31mRequire stack:[39m
+[31m- C:\Users\kaveenprabodhya\Desktop\Vacation4U-reservations-node-rest-app\routes\authection\users.js[39m
+[31m- C:\Users\kaveenprabodhya\Desktop\Vacation4U-reservations-node-rest-app\startup\routes.js[39m
+[31m- C:\Users\kaveenprabodhya\Desktop\Vacation4U-reservations-node-rest-app\index.js[39m
+[31m    at Module._resolveFilename (node:internal/modules/cjs/loader:1077:15)[39m
+[31m    at Module._load (node:internal/modules/cjs/loader:922:27)[39m
+[31m    at Module.require (node:internal/modules/cjs/loader:1143:19)[39m
+[31m    at require (node:internal/modules/cjs/helpers:119:18)[39m
+[31m    at Object.<anonymous> (C:\Users\kaveenprabodhya\Desktop\Vacation4U-reservations-node-rest-app\routes\authection\users.js:4:24)[39m
+[31m    at Module._compile (node:internal/modules/cjs/loader:1256:14)[39m
+[31m    at Module._extensions..js (node:internal/modules/cjs/loader:1310:10)[39m
+[31m    at Module.load (node:internal/modules/cjs/loader:1119:32)[39m
+[31m    at Module._load (node:internal/modules/cjs/loader:960:12)[39m
+[31m    at Module.require (node:internal/modules/cjs/loader:1143:19)[39m
+15/11/2023, 19:45:11 [31merror[39m: [31muncaughtException: Cannot find module '../controllers/authentication/authController'[39m
+[31mRequire stack:[39m
+[31m- C:\Users\kaveenprabodhya\Desktop\Vacation4U-reservations-node-rest-app\routes\authection\auth.js[39m
+[31m- C:\Users\kaveenprabodhya\Desktop\Vacation4U-reservations-node-rest-app\startup\routes.js[39m
+[31m- C:\Users\kaveenprabodhya\Desktop\Vacation4U-reservations-node-rest-app\index.js[39m
+[31mError: Cannot find module '../controllers/authentication/authController'[39m
+[31mRequire stack:[39m
+[31m- C:\Users\kaveenprabodhya\Desktop\Vacation4U-reservations-node-rest-app\routes\authection\auth.js[39m
+[31m- C:\Users\kaveenprabodhya\Desktop\Vacation4U-reservations-node-rest-app\startup\routes.js[39m
+[31m- C:\Users\kaveenprabodhya\Desktop\Vacation4U-reservations-node-rest-app\index.js[39m
+[31m    at Module._resolveFilename (node:internal/modules/cjs/loader:1077:15)[39m
+[31m    at Module._load (node:internal/modules/cjs/loader:922:27)[39m
+[31m    at Module.require (node:internal/modules/cjs/loader:1143:19)[39m
+[31m    at require (node:internal/modules/cjs/helpers:119:18)[39m
+[31m    at Object.<anonymous> (C:\Users\kaveenprabodhya\Desktop\Vacation4U-reservations-node-rest-app\routes\authection\auth.js:3:24)[39m
+[31m    at Module._compile (node:internal/modules/cjs/loader:1256:14)[39m
+[31m    at Module._extensions..js (node:internal/modules/cjs/loader:1310:10)[39m
+[31m    at Module.load (node:internal/modules/cjs/loader:1119:32)[39m
+[31m    at Module._load (node:internal/modules/cjs/loader:960:12)[39m
+[31m    at Module.require (node:internal/modules/cjs/loader:1143:19)[39m
