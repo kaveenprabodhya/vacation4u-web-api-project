@@ -58,7 +58,7 @@ const cartSchema = new mongoose.Schema({
   totalAmount: Number,
 });
 
-const Cart = mongoose.model("Cart", cartSchema);
+const CruiseCart = mongoose.model("CruiseCart", cartSchema);
 
 function validateCart(data) {
   const schema = Joi.object({
@@ -76,6 +76,6 @@ function validateCart(data) {
 }
 
 module.exports = {
-  Cart: Cart,
+  Cart: CruiseCart,
   validateCart: validateCart,
 };

@@ -21,7 +21,7 @@ const cruiseSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  arivalDestination: {
+  arrivalDestination: {
     type: String,
     required: true,
   },
@@ -72,7 +72,7 @@ function validateCruise(data) {
     cruiseImg: Joi.string(),
     cruiseLineImg: Joi.string(),
     depatureDestination: Joi.string().required(),
-    arivalDestination: Joi.string().required(),
+    arrivalDestination: Joi.string().required(),
     depatureDate: Joi.date().iso().required(),
     arrivalDate: Joi.date().iso().required(),
     Duration: Joi.number().required(),
@@ -91,7 +91,22 @@ function validateCruise(data) {
   return schema.validate(data);
 }
 
+function validateCruiseSearchContext(data) {
+  const schema = Joi.object({
+    name: Joi.string(),
+    depatureDestination: Joi.string(),
+    arrivalDestination: Joi.string(),
+    depatureDate: Joi.date().iso(),
+    arrivalDate: Joi.date().iso(),
+    deckNo: Joi.number(),
+    cabinClass: Joi.string(),
+  });
+
+  return schema.validate(data);
+}
+
 module.exports = {
   Cruise: Cruise,
   validateCruise: validateCruise,
+  validateSearchQuery: validateCruiseSearchContext,
 };

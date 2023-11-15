@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const auth = require("../../middlewares/auth");
+const isAdminOrAgent = require("../../middlewares/isAdminOrAgent");
 const cruiseBooking = require("../../controllers/cruise/cruiseBookingController");
 
 /**
@@ -9,22 +10,46 @@ const cruiseBooking = require("../../controllers/cruise/cruiseBookingController"
  */
 
 // get all cart items for a user
-router.get("/cart", auth, cruiseBooking.getAllCartItemsForUser);
+router.get(
+  "/cart",
+  [auth, isAdminOrAgent],
+  cruiseBooking.getAllCartItemsForUser
+);
 
+// timeout
 router.post(
   "/cart/timeout",
-  auth,
+  [auth, isAdminOrAgent],
   cruiseBooking.deleteAllLockedCabinsAfterTimeOut
 );
 
 // create a item in cart for a user
-router.post("/cart", auth, cruiseBooking.createOrUpdateCartItemForUser);
+router.post(
+  "/cart",
+  [auth, isAdminOrAgent],
+  cruiseBooking.createOrUpdateCartItemForUser
+);
+
+// get cart item count
+router.get(
+  "/cart/count",
+  [auth, isAdminOrAgent],
+  cruiseBooking.getCartItemsCount
+);
 
 // reset all cart items for a user
-router.delete("/cart", auth, cruiseBooking.deleteAllCartItemsForUser);
+router.delete(
+  "/cart",
+  [auth, isAdminOrAgent],
+  cruiseBooking.deleteAllCartItemsForUser
+);
 
 // delete item in cart for a user
-router.delete("/cart/:id", auth, cruiseBooking.deleteCartItemForUser);
+router.delete(
+  "/cart/:id",
+  [auth, isAdminOrAgent],
+  cruiseBooking.deleteCartItemForUser
+);
 
 /**
  * cruise orders
@@ -32,16 +57,32 @@ router.delete("/cart/:id", auth, cruiseBooking.deleteCartItemForUser);
  */
 
 // get orders
-router.get("/orders/", auth, cruiseBooking.getAllOrdersForUser);
+router.get(
+  "/orders/",
+  [auth, isAdminOrAgent],
+  cruiseBooking.getAllOrdersForUser
+);
 
 // get order details
-router.get("/orders/:id", auth, cruiseBooking.getOrderDetailsForUser);
+router.get(
+  "/orders/:id",
+  [auth, isAdminOrAgent],
+  cruiseBooking.getOrderDetailsForUser
+);
 
 // get order status
-router.get("/orders/:id/status", auth, cruiseBooking.getOrderStatusForUser);
+router.get(
+  "/orders/:id/status",
+  [auth, isAdminOrAgent],
+  cruiseBooking.getOrderStatusForUser
+);
 
 // cancel an order
-router.delete("/orders/cancel", auth, cruiseBooking.cancelOrderForUser);
+router.delete(
+  "/orders/cancel",
+  [auth, isAdminOrAgent],
+  cruiseBooking.cancelOrderForUser
+);
 
 /**
  * cruise reservation checkout
@@ -49,6 +90,10 @@ router.delete("/orders/cancel", auth, cruiseBooking.cancelOrderForUser);
  */
 
 // create an order (reservation) after a successfull checkout
-router.post("/orders/", auth, cruiseBooking.createOrderForUser);
+router.post(
+  "/orders/",
+  [auth, isAdminOrAgent],
+  cruiseBooking.createOrderForUser
+);
 
 module.exports = router;

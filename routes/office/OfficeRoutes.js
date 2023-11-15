@@ -1,11 +1,8 @@
 const express = require("express");
 const router = express.Router();
 const multer = require("multer");
-const csvParser = require("csv-parser");
-const fs = require("fs");
-const Activity = require("../models/Activity");
-const Cruise = require("../models/Cruise");
-const Holiday = require("../models/Holiday");
+const Activity = require("../../models/activity/Activity");
+const Holiday = require("../../models/holiday/Holiday");
 const storage = multer.memoryStorage();
 const upload = multer({ storage: storage });
 
@@ -17,18 +14,12 @@ const {
   deleteActivity,
   getActivityByKey,
 
-  getCruiseById,
-  getCruise,
-  editCruise,
-  deleteCruise,
-  getCruiseByKey,
-
   getHolidayById,
   getHoliday,
   editHoliday,
   deleteHoliday,
   getHolidayByKey,
-} = require("../controllers/OfficeController");
+} = require("../../controllers/office/OfficeController");
 
 router.post("/add/activity", upload.single("file"), async (req, res) => {
   // Check if a file is provided

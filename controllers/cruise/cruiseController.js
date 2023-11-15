@@ -1,5 +1,9 @@
 const { default: mongoose } = require("mongoose");
-const { validateCruise, Cruise } = require("../../models/cruise/cruise");
+const {
+  validateCruise,
+  Cruise,
+  validateSearchQuery,
+} = require("../../models/cruise/cruise");
 const { Ship } = require("../../models/cruise/ship");
 const csv = require("csv-parser");
 const streamifier = require("streamifier");
@@ -123,7 +127,7 @@ exports.deleteAllCruises = async (req, res, next) => {
   await Cruise.deleteMany()
     .then((data) => {
       if (!data) {
-        res.status(404).send({
+        return res.status(404).send({
           message: `Cannot delete Cruise. No content found.`,
         });
       } else res.send({ message: "Cruise deleted successfully." });
@@ -204,8 +208,9 @@ exports.createCruiseWithCSV = async (req, res, next) => {
 
 // essential functions
 exports.searchCruise = async (req, res, next) => {
-  const page = parseInt(req.query.page) || 1;
-  const limit = parseInt(req.query.limit) || 10;
+  const { pageNo, limitNo, deckNo, cabinClass, ...search } = req.query;
+  const page = parseInt(pageNo) || 1;
+  const limit = parseInt(limitNo) || 10;
   const startIndex = (page - 1) * limit;
   const endIndex = page * limit;
 
@@ -225,7 +230,10 @@ exports.searchCruise = async (req, res, next) => {
     };
   }
 
-  results.current = await Cruise.find(req.query)
+  const { error } = validateSearchQuery(search);
+  if (error) return res.status(400).send(error.details[0].message);
+
+  results.current = await Cruise.find(search)
     .limit(limit)
     .skip(startIndex)
     .exec();

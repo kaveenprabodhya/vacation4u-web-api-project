@@ -1,7 +1,7 @@
 const asyncHandler = require("express-async-handler");
 const bcrypt = require("bcrypt");
-const Employee = require("../models/Employee");
-const Auth = require("../models/Auth");
+const Employee = require("../../models/employee/Employee");
+const { User } = require("../../models/user");
 
 //Add Employee
 const addEmployee = asyncHandler(async (req, res) => {
@@ -29,16 +29,28 @@ const addEmployee = asyncHandler(async (req, res) => {
   const saltRounds = 10;
   const hashedPassword = await bcrypt.hash(password, saltRounds);
 
+  const role = {};
+  if (position === "admin") {
+    role.isAdmin = true;
+  } else if (position === "staff") {
+    role.isStaff = true;
+  } else if (position === "agent") {
+    role.isAgent = true;
+  }
+
   //create user login
-  const auth = new Auth({
+  const user = new User({
+    name: name,
     email: email,
     password: hashedPassword,
-    role: position,
+    role,
   });
 
-  await auth.save();
+  console.log(user);
 
-  const id = auth._id;
+  await user.save();
+
+  const id = user._id;
   //create Employee
   const newEmployee = new Employee({
     name,
@@ -169,7 +181,7 @@ const deleteEmployee = asyncHandler(async (req, res) => {
 
     try {
       await Employee.deleteOne({ _id: req.params.id });
-      await Auth.deleteOne({ _id: account });
+      await User.deleteOne({ _id: account });
     } catch (error) {
       res.status(500).json({ error: err.message });
     }
@@ -182,7 +194,7 @@ const deleteEmployee = asyncHandler(async (req, res) => {
 });
 
 const passwordChange = asyncHandler(async (req, res) => {
-  const employee = await Auth.findById(req.params.id);
+  const employee = await User.findById(req.params.id);
 
   if (!employee) {
     return res.status(404).json({
@@ -203,7 +215,7 @@ const passwordChange = asyncHandler(async (req, res) => {
     const hashedPassword = await bcrypt.hash(req.body.new, saltRounds);
 
     try {
-      const up = await Auth.findByIdAndUpdate(
+      const up = await User.findByIdAndUpdate(
         req.params.id,
         { password: hashedPassword },
         {

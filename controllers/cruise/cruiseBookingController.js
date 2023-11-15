@@ -1,3 +1,4 @@
+const { default: mongoose } = require("mongoose");
 const { Cart, validateCart } = require("../../models/cruise/cart");
 const { Cruise } = require("../../models/cruise/cruise");
 const { Order, validateOrder } = require("../../models/cruise/order");
@@ -38,9 +39,13 @@ exports.deleteAllLockedCabinsAfterTimeOut = async (req, res, next) => {
     return res.status(404).send({ message: "no cart items found to delete." });
   }
 
-  cart.items.splice(itemIndex, 1);
+  for (item in itemsToDelete) {
+    cart.items.splice(item._id, 1);
+  }
 
   await cart.save();
+
+  res.send("Items removed successfully.");
 };
 
 exports.getCartItemsCount = async (req, res, next) => {
@@ -271,9 +276,8 @@ const getFareByCabinAndDeck = async (noOfPassengers, cruiseReservation) => {
 };
 
 exports.deleteCartItemForUser = async (req, res, next) => {
+  const cartItemId = req.params.id;
   try {
-    const cartItemId = req.params.id;
-
     if (!mongoose.Types.ObjectId.isValid(cartItemId))
       return res.status(400).send({
         message: `Cannot delete Cart Item with path id=${cartItemId}!`,
@@ -386,21 +390,13 @@ exports.getOrderDetailsForUser = async (req, res, next) => {
 exports.getOrderStatusForUser = async (req, res, next) => {
   const userId = req.user._id;
   const orderId = req.params.id;
-  await Order.find({ _id: orderId, userId })
-    .then((order) => {
-      if (!order) {
-        res.status(404).send({
-          message: `Could not found order with id=${req.params.id}.`,
-        });
-      } else {
-        res.send(order.orderStatus);
-      }
-    })
-    .catch((err) => {
-      res.status(500).send({
-        message: "Error retrieving Order with id=" + req.params.id,
-      });
+  const order = await Order.findById(req.params.id);
+  if (!order) {
+    return res.status(404).send({
+      message: `Could not found order with id=${req.params.id}.`,
     });
+  }
+  res.send({ orderStatus: order.orderStatus });
 };
 
 exports.cancelOrderForUser = async (req, res, next) => {

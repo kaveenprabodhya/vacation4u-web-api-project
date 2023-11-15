@@ -1,5 +1,5 @@
 const asyncHandler = require("express-async-handler");
-const Activity = require("../models/Activity");
+const Activity = require("../../models/activity/Activity");
 
 //Get Activity  by Search
 const getActivityByDestination = asyncHandler(async (req, res) => {

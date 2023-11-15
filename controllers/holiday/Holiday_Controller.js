@@ -1,6 +1,5 @@
 const asyncHandler = require("express-async-handler");
-const Holiday = require("../models/Holiday");
-
+const Holiday = require("../../models/holiday/Holiday");
 
 //Get Holiday  by Search
 const getHolidayByDestination = asyncHandler(async (req, res) => {
@@ -38,7 +37,9 @@ const getHolidayByDuration = asyncHandler(async (req, res) => {
 
 //Get Holiday  by Search
 const getHolidayByTravelers = asyncHandler(async (req, res) => {
-  const holiday = await Holiday.find({ participants:  parseInt(req.params.key) });
+  const holiday = await Holiday.find({
+    participants: parseInt(req.params.key),
+  });
 
   if (holiday) {
     res.status(200).json({
@@ -88,13 +89,10 @@ const getHoliday = asyncHandler(async (req, res) => {
   }
 });
 
-
-
 module.exports = {
-    getHolidayByDestination,
-    getHolidayByDuration,
-    getHolidayByTravelers,
-    getHolidayBySpecialty,
-    getHoliday 
-  };
-  
+  getHolidayByDestination,
+  getHolidayByDuration,
+  getHolidayByTravelers,
+  getHolidayBySpecialty,
+  getHoliday,
+};

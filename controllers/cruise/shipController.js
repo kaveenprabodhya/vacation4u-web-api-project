@@ -175,7 +175,8 @@ exports.getMealPreferencesByCabinType = async (req, res, next) => {
         message: `Cannot find Ship with id = ${req.params.id}.`,
       });
     } else {
-      return res.send(data.deckAndCabin.mealPreference);
+      console.log(data);
+      return res.send(data.mealPreference);
     }
   });
 };

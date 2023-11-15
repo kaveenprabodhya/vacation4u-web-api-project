@@ -1,7 +1,6 @@
 const asyncHandler = require("express-async-handler");
-const Activity = require("../models/Activity");
-const Cruise = require("../models/Cruise");
-const Holiday = require("../models/Holiday");
+const Activity = require("../../models/activity/Activity");
+const Holiday = require("../../models/holiday/Holiday");
 
 //Get Activity by Id
 const getActivityById = asyncHandler(async (req, res) => {
@@ -58,15 +57,8 @@ const getActivity = asyncHandler(async (req, res) => {
 //Update Activity
 const editActivity = asyncHandler(async (req, res) => {
   try {
-    const {
-      name,
-      destination,
-      date,
-      type,
-      rating,
-      price,
-      ageRestriction,
-    } = req.body;
+    const { name, destination, date, type, rating, price, ageRestriction } =
+      req.body;
 
     if (
       !name ||
@@ -118,129 +110,6 @@ const deleteActivity = asyncHandler(async (req, res) => {
     res.status(200).json({
       success: true,
       message: "Activity deleted successfully",
-    });
-  }
-});
-
-//Get Cruise by Id
-const getCruiseById = asyncHandler(async (req, res) => {
-  const cruise = await Cruise.findById(req.params.id);
-
-  if (cruise) {
-    res.status(200).json({
-      success: true,
-      data: cruise,
-    });
-  } else {
-    res.status(404).json({
-      success: false,
-      message: "Cruise not found",
-    });
-  }
-});
-
-//Get Cruise by Search
-const getCruiseByKey = asyncHandler(async (req, res) => {
-  const cruise = await Cruise.find({ name: req.params.key });
-
-  if (cruise) {
-    res.status(200).json({
-      success: true,
-      data: cruise,
-    });
-  } else {
-    res.status(404).json({
-      success: false,
-      message: "Cruise not found",
-    });
-  }
-});
-
-//Retrieve all the Cruise
-const getCruise = asyncHandler(async (req, res) => {
-  const cruise = await Cruise.find();
-
-  if (cruise) {
-    res.status(200).json({
-      success: true,
-      data: cruise,
-    });
-  } else {
-    res.status(404).json({
-      success: false,
-      message: "No Cruise found",
-    });
-    throw new Error("No Cruise found");
-  }
-});
-
-//Update Cruise
-const editCruise = asyncHandler(async (req, res) => {
-  try {
-    const {
-      name,
-      departureDestination,
-      arrivalDestination,
-      departureDate,
-      arrivalDate,
-      deck,
-      price,
-      duration,
-      provider,
-    } = req.body;
-
-    if (
-      !name ||
-      !departureDestination ||
-      !arrivalDestination ||
-      !departureDate ||
-      !arrivalDate ||
-      !deck ||
-      !price ||
-      !duration ||
-      !provider
-    ) {
-      return res.status(400).json({
-        success: false,
-        message: "Data Missing",
-      });
-    }
-
-    const cruise = await Cruise.findByIdAndUpdate(req.params.id, req.body, {
-      new: true,
-    });
-
-    if (!cruise) {
-      return res.status(400).json({ error: "Not Updated" });
-    }
-    res.status(200).json({
-      success: true,
-      data: cruise,
-    });
-  } catch (err) {
-    res.status(500).json({ error: err.message });
-  }
-});
-
-//Delete Cruise  by Id
-const deleteCruise = asyncHandler(async (req, res) => {
-  const cruise = await Cruise.findById(req.params.id);
-
-  if (!cruise) {
-    return res.status(400).json({
-      success: false,
-      message: "No data found",
-    });
-  } else {
-    try {
-      await Cruise.deleteOne({ _id: req.params.id });
-    } catch (error) {
-      res.status(500).json({ error: err.message });
-    }
-
-    res.status(200).json({
-      success: true,
-      message: "Cruise deleted successfully",
     });
   }
 });
@@ -370,12 +239,6 @@ module.exports = {
   editActivity,
   deleteActivity,
   getActivityByKey,
-
-  getCruiseById,
-  getCruise,
-  editCruise,
-  deleteCruise,
-  getCruiseByKey,
 
   getHolidayById,
   getHoliday,

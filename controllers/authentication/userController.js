@@ -22,8 +22,6 @@ exports.register = async (req, res) => {
     role: req.body.role,
   });
 
-  console.log(user);
-
   const salt = await bcrypt.genSalt(10);
   user.password = await bcrypt.hash(user.password, salt);
 

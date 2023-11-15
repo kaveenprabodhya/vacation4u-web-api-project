@@ -1,6 +1,6 @@
 const asyncHandler = require("express-async-handler");
-const Book = require("../models/Booking");
-const Cart = require("../models/Cart");
+const Book = require("../../models/booking/Booking");
+const Cart = require("../../models/cart/Cart");
 
 //Add Cart Item
 const addItem = asyncHandler(async (req, res) => {
@@ -26,7 +26,7 @@ const addItem = asyncHandler(async (req, res) => {
 
 //Retrieve all the Cart Items
 const getCart = asyncHandler(async (req, res) => {
-  const ct = await Cart.find({agent:req.params.id});
+  const ct = await Cart.find({ agent: req.params.id });
 
   if (ct) {
     res.status(200).json({
@@ -42,7 +42,6 @@ const getCart = asyncHandler(async (req, res) => {
   }
 });
 
-
 //Delete Item by Id
 const deleteCart = asyncHandler(async (req, res) => {
   const item = await Cart.findById(req.params.id);
@@ -53,8 +52,6 @@ const deleteCart = asyncHandler(async (req, res) => {
       message: "No data found",
     });
   } else {
-    
-
     try {
       await Cart.deleteOne({ _id: req.params.id });
     } catch (error) {
@@ -67,9 +64,6 @@ const deleteCart = asyncHandler(async (req, res) => {
     });
   }
 });
-
-
-
 
 //Add Booking Item
 const addBooking = asyncHandler(async (req, res) => {
@@ -93,11 +87,9 @@ const addBooking = asyncHandler(async (req, res) => {
   }
 });
 
-
-
 //Retrieve all the Booking Items
 const getBooking = asyncHandler(async (req, res) => {
-  const ct = await Book.find({agent:req.params.id});
+  const ct = await Book.find({ agent: req.params.id });
 
   if (ct) {
     res.status(200).json({
@@ -112,8 +104,6 @@ const getBooking = asyncHandler(async (req, res) => {
     throw new Error("No Item found");
   }
 });
-
-
 
 module.exports = {
   addItem,
