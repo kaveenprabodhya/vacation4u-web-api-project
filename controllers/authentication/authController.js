@@ -16,7 +16,18 @@ exports.authenticate = async (req, res) => {
 
   const token = user.generateAuthToken();
 
-  res.send({ token, role: user.role, email: user.email });
+  let userRole;
+  if (user.role.isAdmin === true) {
+    userRole = "Admin";
+  }
+  if (user.role.isStaff === true) {
+    userRole = "Office";
+  }
+  if (user.role.isAgent === true) {
+    userRole = "Agent";
+  }
+
+  res.send({ token, role: userRole, email: user.email });
 };
 
 function validate(req) {
