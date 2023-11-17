@@ -10,7 +10,7 @@ const streamifier = require("streamifier");
 
 exports.getAllCruises = async (req, res, next) => {
   const page = parseInt(req.query.page) || 1;
-  const limit = parseInt(req.query.limit) || 10;
+  const limit = parseInt(req.query.limit) || 9;
   const startIndex = (page - 1) * limit;
   const endIndex = page * limit;
 
@@ -36,7 +36,7 @@ exports.getAllCruises = async (req, res, next) => {
 // cruise
 exports.createCruise = async (req, res, next) => {
   const { error } = validateCruise(req.body);
-  if (error) return res.status(400).send(error.details[0].message);
+  if (error) return res.status(400).send({ message: error.details[0].message });
 
   const ship = await Ship.findById(req.body.shipId).catch((err) =>
     res.status(500).send({
@@ -63,7 +63,7 @@ exports.createCruise = async (req, res, next) => {
 
 exports.updateCruiseByID = async (req, res, next) => {
   const { error } = validateCruise(req.body);
-  if (error) return res.status(400).send(error.details[0].message);
+  if (error) return res.status(400).send({ message: error.details[0].message });
 
   const id = req.params.id;
 
@@ -155,12 +155,13 @@ exports.createCruiseWithCSV = async (req, res, next) => {
         cruiseImg,
         cruiseLineImg,
         depatureDestination,
-        arivalDestination,
+        arrivalDestination,
         depatureDate,
         arrivalDate,
         Duration,
-        ratings,
         shipId,
+        deckNo,
+        cabinTypes,
         portOfCall,
         bestFor,
         baseFare,
@@ -172,12 +173,13 @@ exports.createCruiseWithCSV = async (req, res, next) => {
         cruiseImg,
         cruiseLineImg,
         depatureDestination,
-        arivalDestination,
+        arrivalDestination,
         depatureDate,
         arrivalDate,
         Duration,
-        ratings,
         shipId,
+        deckNo,
+        cabinTypes,
         portOfCall,
         bestFor,
         baseFare,
@@ -188,17 +190,19 @@ exports.createCruiseWithCSV = async (req, res, next) => {
         },
       };
 
-      console.log(cruiseObj);
-
       const { error } = Cruise.validate(cruiseObj);
       if (error) {
-        return res.status(400).send(error.details[0].message);
+        return res.status(400).send({ message: error.details[0].message });
       } else {
-        const cruise = new Cruise(cruiseObj);
-        cruise
-          .save()
-          .then((doc) => console.log("Document inserted", doc))
-          .catch((err) => console.error("Error inserting document", err));
+        try {
+          const cruise = new Cruise(cruiseObj);
+          cruise
+            .save()
+            .then((doc) => console.log("Document inserted", doc))
+            .catch((err) => console.error("Error inserting document", err));
+        } catch (ex) {
+          res.status(500).send("Something went wrong. Please try again later.");
+        }
       }
     })
     .on("end", () => {
@@ -208,15 +212,23 @@ exports.createCruiseWithCSV = async (req, res, next) => {
 
 // essential functions
 exports.searchCruise = async (req, res, next) => {
-  const { pageNo, limitNo, deckNo, cabinClass, ...search } = req.query;
+  const { pageNo, limitNo, cabinTypes, ...search } = req.query;
   const page = parseInt(pageNo) || 1;
-  const limit = parseInt(limitNo) || 10;
+  const limit = parseInt(limitNo) || 9;
   const startIndex = (page - 1) * limit;
   const endIndex = page * limit;
 
   const results = {};
 
-  if (endIndex < (await Cruise.countDocuments().exec())) {
+  let queryCondition = { ...search };
+  if (cabinTypes) {
+    const cabinTypesArray = cabinTypes.split(",");
+    queryCondition.cabinTypes = { $in: cabinTypesArray };
+  }
+
+  console.log(queryCondition);
+
+  if (endIndex < (await Cruise.countDocuments(queryCondition).exec())) {
     results.next = {
       page: page + 1,
       limit: limit,
@@ -231,9 +243,9 @@ exports.searchCruise = async (req, res, next) => {
   }
 
   const { error } = validateSearchQuery(search);
-  if (error) return res.status(400).send(error.details[0].message);
+  if (error) return res.status(400).send({ message: error.details[0].message });
 
-  results.current = await Cruise.find(search)
+  results.current = await Cruise.find(queryCondition)
     .limit(limit)
     .skip(startIndex)
     .exec();
@@ -246,7 +258,7 @@ exports.sortCruise = async (req, res, next) => {
   const sortOrder = req.query.sortOrder || "asc";
 
   const page = parseInt(req.query.page) || 1;
-  const limit = parseInt(req.query.limit) || 10;
+  const limit = parseInt(req.query.limit) || 9;
   const startIndex = (page - 1) * limit;
   const endIndex = page * limit;
 
@@ -277,13 +289,26 @@ exports.sortCruise = async (req, res, next) => {
 
 exports.filterCruise = async (req, res, next) => {
   const page = parseInt(req.query.page) || 1;
-  const limit = parseInt(req.query.limit) || 10;
+  const limit = parseInt(req.query.limit) || 9;
   const startIndex = (page - 1) * limit;
   const endIndex = page * limit;
 
   const results = {};
 
-  if (endIndex < (await Cruise.countDocuments().exec())) {
+  const { minPrice, maxPrice, ...rest } = req.body;
+
+  console.log(minPrice, maxPrice);
+
+  let queryCondition = {};
+  if (minPrice != null || maxPrice != null) {
+    queryCondition.baseFare = {};
+    if (minPrice != null) queryCondition.baseFare.$gte = parseFloat(minPrice);
+    if (maxPrice != null) queryCondition.baseFare.$lte = parseFloat(maxPrice);
+  }
+  console.log(queryCondition);
+  Object.assign(queryCondition, rest);
+
+  if (endIndex < (await Cruise.countDocuments(queryCondition).exec())) {
     results.next = {
       page: page + 1,
       limit: limit,
@@ -296,8 +321,9 @@ exports.filterCruise = async (req, res, next) => {
       limit: limit,
     };
   }
+  console.log(queryCondition);
 
-  results.current = await Cruise.find(req.body)
+  results.current = await Cruise.find(queryCondition)
     .limit(limit)
     .skip(startIndex)
     .exec();

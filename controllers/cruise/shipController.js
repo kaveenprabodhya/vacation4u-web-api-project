@@ -4,7 +4,7 @@ const { Ship, validateShip } = require("../../models/cruise/ship");
 // ship
 exports.getAllShips = async (req, res, next) => {
   const page = parseInt(req.query.page) || 1;
-  const limit = parseInt(req.query.limit) || 1;
+  const limit = parseInt(req.query.limit) || 9;
   const startIndex = (page - 1) * limit;
   const endIndex = page * limit;
   const results = {};
@@ -48,10 +48,11 @@ exports.getShipByID = async (req, res, next) => {
 
 exports.createShip = async (req, res, next) => {
   const { error } = validateShip(req.body);
-  if (error) return res.status(400).send(error.details[0].message);
+  if (error) return res.status(400).send({ message: error.details[0].message });
 
   const ship = new Ship({
     name: req.body.name,
+    img: req.body.img,
     overview: req.body.overview,
     review: req.body.review,
     gallery: req.body.gallery,
@@ -67,9 +68,39 @@ exports.createShip = async (req, res, next) => {
   }
 };
 
+exports.getShipByName = async (req, res, next) => {
+  const name = req.query.name;
+  const page = parseInt(req.query.page) || 1;
+  const limit = parseInt(req.query.limit) || 9;
+  const startIndex = (page - 1) * limit;
+  const endIndex = page * limit;
+  const results = {};
+
+  if (endIndex < (await Ship.countDocuments().exec())) {
+    results.next = {
+      page: page + 1,
+      limit: limit,
+    };
+  }
+
+  if (startIndex > 0) {
+    results.previous = {
+      page: page - 1,
+      limit: limit,
+    };
+  }
+
+  results.current = await Ship.find({ name })
+    .limit(limit)
+    .skip(startIndex)
+    .exec();
+
+  res.send(results);
+};
+
 exports.updateShipByID = async (req, res, next) => {
   const { error } = validateShip(req.body);
-  if (error) return res.status(400).send(error.details[0].message);
+  if (error) return res.status(400).send({ message: error.details[0].message });
 
   const id = req.params.id;
   if (!mongoose.Types.ObjectId.isValid(id))

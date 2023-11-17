@@ -130,6 +130,7 @@ const shipOverviewSchema = new mongoose.Schema({
 
 const shipSchema = new mongoose.Schema({
   name: { type: String, required: true },
+  img: { type: String, required: true },
   overview: shipOverviewSchema,
   review: [reviewSchema],
   gallery: [String],
@@ -142,6 +143,7 @@ const Ship = mongoose.model("Ship", shipSchema);
 function validateShip(data) {
   const schema = Joi.object({
     name: Joi.string().required(),
+    img: Joi.string().required(),
     overview: {
       shipHighlights: Joi.array().items(Joi.string().allow("")),
       dining: Joi.array().items(

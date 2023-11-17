@@ -37,15 +37,12 @@ const cruiseSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
-  ratings: {
-    type: Number,
-    min: 0,
-    max: 5,
-  },
   shipId: {
     type: mongoose.Types.ObjectId,
     required: true,
   },
+  deckNo: { type: Number, default: 0 },
+  cabinTypes: [String],
   portOfCall: [String],
   bestFor: [
     {
@@ -76,8 +73,9 @@ function validateCruise(data) {
     depatureDate: Joi.date().iso().required(),
     arrivalDate: Joi.date().iso().required(),
     Duration: Joi.number().required(),
-    ratings: Joi.number().required(),
     shipId: Joi.objectId().required(),
+    deckNo: Joi.number().required(),
+    cabinTypes: Joi.array().items(Joi.string()),
     portOfCall: Joi.array().items(Joi.string()),
     bestFor: Joi.array().items(Joi.string()),
     baseFare: Joi.number().required(),
@@ -99,7 +97,7 @@ function validateCruiseSearchContext(data) {
     depatureDate: Joi.date().iso(),
     arrivalDate: Joi.date().iso(),
     deckNo: Joi.number(),
-    cabinClass: Joi.string(),
+    cabinTypes: Joi.string(),
   });
 
   return schema.validate(data);

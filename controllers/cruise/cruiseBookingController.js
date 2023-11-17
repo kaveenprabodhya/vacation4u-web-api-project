@@ -3,9 +3,10 @@ const { Cart, validateCart } = require("../../models/cruise/cart");
 const { Cruise } = require("../../models/cruise/cruise");
 const { Order, validateOrder } = require("../../models/cruise/order");
 const { Ship } = require("../../models/cruise/ship");
+const asyncMiddleware = require("../../middlewares/trycatch");
 
 // cart
-exports.getAllCartItemsForUser = async (req, res, next) => {
+exports.getAllCartItemsForUser = asyncMiddleware(async (req, res, next) => {
   const userId = req.user._id;
 
   const userCartArray = await Cart.findOne({ userId });
@@ -19,7 +20,7 @@ exports.getAllCartItemsForUser = async (req, res, next) => {
   }
 
   res.send({ userCartArray });
-};
+});
 
 exports.deleteAllLockedCabinsAfterTimeOut = async (req, res, next) => {
   const userId = req.user._id;
@@ -70,7 +71,7 @@ exports.getCartItemsCount = async (req, res, next) => {
 
 exports.createOrUpdateCartItemForUser = async (req, res, next) => {
   const { error } = validateCart(req.body);
-  if (error) return res.status(400).send(error.details[0].message);
+  if (error) return res.status(400).send({ message: error.details[0].message });
 
   let subTotal = 0;
   let totalTaxFare = 0;
@@ -336,7 +337,7 @@ exports.getAllOrdersForUser = async (req, res, next) => {
   const userId = req.user._id;
 
   const page = parseInt(req.query.page) || 1;
-  const limit = parseInt(req.query.limit) || 10;
+  const limit = parseInt(req.query.limit) || 9;
   const startIndex = (page - 1) * limit;
   const endIndex = page * limit;
 
@@ -420,7 +421,7 @@ exports.cancelOrderForUser = async (req, res, next) => {
 // checkout
 exports.createOrderForUser = async (req, res, next) => {
   const { error } = validateOrder(req.body);
-  if (error) return res.status(400).send(error.details[0].message);
+  if (error) return res.status(400).send({ message: error.details[0].message });
 
   const order = new Order({
     userId: req.user._id,

@@ -5,6 +5,7 @@ const isAdminOrAgent = require("../../middlewares/isAdminOrAgent");
 const cruise = require("../../controllers/cruise/cruiseController");
 const ship = require("../../controllers/cruise/shipController");
 const multer = require("multer");
+const isAdminOrAgentOrStaff = require("../../middlewares/isAdminOrAgentOrStaff");
 const isAdminOrStaff = require("../../middlewares/isAdminOrStaff");
 const storage = multer.memoryStorage();
 const upload = multer({ storage: storage });
@@ -15,10 +16,10 @@ const upload = multer({ storage: storage });
  */
 
 // get all cruise
-router.get("/", [auth, isAdminOrAgent], cruise.getAllCruises);
+router.get("/", [auth, isAdminOrAgentOrStaff], cruise.getAllCruises);
 
 // create a cruise
-router.post("/", [auth, isAdminOrAgent], cruise.createCruise);
+router.post("/", [auth, isAdminOrStaff], cruise.createCruise);
 
 // upload cruise using csv
 router.post(
@@ -29,13 +30,13 @@ router.post(
 );
 
 // update cruise details
-router.put("/:id", [auth, isAdminOrAgent], cruise.updateCruiseByID);
+router.put("/:id", [auth, isAdminOrStaff], cruise.updateCruiseByID);
 
 // delete all cruise
-router.delete("/all", cruise.deleteAllCruises);
+router.delete("/all", [auth, isAdminOrStaff], cruise.deleteAllCruises);
 
 // delete cruise
-router.delete("/:id", [auth, isAdminOrAgent], cruise.deleteCruiseByID);
+router.delete("/:id", [auth, isAdminOrStaff], cruise.deleteCruiseByID);
 
 /**
  * Ship
@@ -43,48 +44,51 @@ router.delete("/:id", [auth, isAdminOrAgent], cruise.deleteCruiseByID);
  */
 
 // get all ship
-router.get("/ship", [auth, isAdminOrAgent], ship.getAllShips);
+router.get("/ship", [auth, isAdminOrAgentOrStaff], ship.getAllShips);
+
+// get ship by name
+router.get("/ship/search", [auth, isAdminOrStaff], ship.getShipByName);
 
 // get meal preferences based on the cabin type
 router.get(
   "/ship/:id/allmealpreferences",
-  [auth, isAdminOrAgent],
+  [auth, isAdminOrAgentOrStaff],
   ship.getMealPreferencesByCabinType
 );
 
 // get cabin types
 router.get(
   "/ship/:id/cabintypes",
-  [auth, isAdminOrAgent],
+  [auth, isAdminOrAgentOrStaff],
   ship.getAllCabinTypes
 );
 
 // get all booked cabins
 router.get(
   "/ship/:id/bookings",
-  [auth, isAdminOrAgent],
+  [auth, isAdminOrAgentOrStaff],
   ship.getAllBookedCabins
 );
 
 // get ship by destinaion
-router.get("/ship/:id", [auth, isAdminOrAgent], ship.getShipByID);
+router.get("/ship/:id", [auth, isAdminOrAgentOrStaff], ship.getShipByID);
 
 // create a ship
 router.post(
   "/ship",
-  [auth, isAdminOrAgent],
+  [auth, isAdminOrStaff],
   upload.single("file"),
   ship.createShip
 );
 
 // update ship details
-router.put("/ship/:id", [auth, isAdminOrAgent], ship.updateShipByID);
+router.put("/ship/:id", [auth, isAdminOrStaff], ship.updateShipByID);
 
 // delete all ship
-router.delete("/ship/all", [auth, isAdminOrAgent], ship.deleteAllShips);
+router.delete("/ship/all", [auth, isAdminOrStaff], ship.deleteAllShips);
 
 // delete ship
-router.delete("/ship/:id", [auth, isAdminOrAgent], ship.deleteShipByID);
+router.delete("/ship/:id", [auth, isAdminOrStaff], ship.deleteShipByID);
 
 /**
  * Cruise essential functions
@@ -92,12 +96,12 @@ router.delete("/ship/:id", [auth, isAdminOrAgent], ship.deleteShipByID);
  */
 
 // search cruise
-router.get("/search", [auth, isAdminOrAgent], cruise.searchCruise);
+router.get("/search", [auth, isAdminOrAgentOrStaff], cruise.searchCruise);
 
 // sort cruise
 router.get("/sort", [auth, isAdminOrAgent], cruise.sortCruise);
 
 // filter cruise
-router.get("/filter", [auth, isAdminOrAgent], cruise.filterCruise);
+router.post("/filter", [auth, isAdminOrAgent], cruise.filterCruise);
 
 module.exports = router;

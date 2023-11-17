@@ -58,7 +58,7 @@ router.delete(
 
 // get orders
 router.get(
-  "/orders/",
+  "/orders",
   [auth, isAdminOrAgent],
   cruiseBooking.getAllOrdersForUser
 );
@@ -91,7 +91,7 @@ router.delete(
 
 // create an order (reservation) after a successfull checkout
 router.post(
-  "/orders/",
+  "/orders",
   [auth, isAdminOrAgent],
   cruiseBooking.createOrderForUser
 );
