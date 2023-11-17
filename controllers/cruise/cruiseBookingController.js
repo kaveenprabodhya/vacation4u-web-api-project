@@ -175,7 +175,7 @@ const setLockedPropOfAvailableCabin = async (
         ship.deckAndCabin.deck.forEach((deck) => {
           if (deck.deckNumber === deckNo) {
             deck.cabin.forEach((cabin) => {
-              if (cabin.type == cabinType) {
+              if (cabin.type === cabinType) {
                 if (cabin.maxGuests === noOfPassengers) {
                   if (!cabin.booked && !cabin.locked) {
                     //available cabin
